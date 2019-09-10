@@ -197,3 +197,4 @@ fabric.properties
 
 *.db
 .idea
+/flaskdemo/static/profile_pics/
