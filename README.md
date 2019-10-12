@@ -14,12 +14,15 @@
 ## migrations
 
 * to initializate the migratioins
+
     `flask db init`
     
 * to generate the needed migrations
+
     `flask db migrate`
     
 * to apply the generated migrations
+
     `flask db upgrade`
     
 
