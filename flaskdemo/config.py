@@ -14,6 +14,8 @@ class Config:
     MAIL_USERNAME = os.environ.get("EMAIL_USER")
     MAIL_PASSWORD = os.environ.get("EMAIL_PASS")
 
+    # EXPLAIN_TEMPLATE_LOADING = True
+
     print('SC', SECRET_KEY)
     print('MU', MAIL_USERNAME)
     print('MP', MAIL_PASSWORD)

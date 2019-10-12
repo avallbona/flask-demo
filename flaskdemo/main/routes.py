@@ -3,7 +3,7 @@ from flask import render_template, request
 
 from flaskdemo.models import Post
 
-main = Blueprint('main', __name__)
+main = Blueprint('main', __name__, template_folder='templates')
 
 
 @main.route("/")
@@ -17,3 +17,8 @@ def home():
 @main.route("/about")
 def about():
     return render_template("about.html", title="About")
+
+
+@main.route("/about2")
+def about2():
+    return render_template("main/about2.html", title="About")
