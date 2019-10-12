@@ -1,5 +1,10 @@
 # flask-demo
 
+## requirements
+
+* pipenv
+* python 3.7
+
 
 ## Installation
 
