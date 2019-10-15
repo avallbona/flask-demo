@@ -13,6 +13,7 @@ flask-login = "*"
 flask-bcrypt = "*"
 pillow = "*"
 flask-migrate = "*"
+flask-restful = "*"
 
 [dev-packages]
 

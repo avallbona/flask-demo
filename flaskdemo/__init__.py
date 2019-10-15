@@ -31,10 +31,12 @@ def create_app(config_class=Config):
     from flaskdemo.posts.routes import posts
     from flaskdemo.main.routes import main
     from flaskdemo.errors.handlers import errors
+    from flaskdemo.api.routes import api_bp
 
     app.register_blueprint(users)
     app.register_blueprint(posts)
     app.register_blueprint(main)
     app.register_blueprint(errors)
+    app.register_blueprint(api_bp)
 
     return app
