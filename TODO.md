@@ -1,6 +1,6 @@
 # todo
 
 * nested fk author
-* token authorization
+* token authorization (flask-httpauth)
 * email validation on users chema
 * flask swagger

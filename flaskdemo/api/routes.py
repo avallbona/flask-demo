@@ -8,8 +8,8 @@ api = Api(api_bp)
 
 # posts
 api.add_resource(PostListResource, '/post/')
-api.add_resource(PostResource, '/post/<int:post_id>/')
+api.add_resource(PostResource, '/post/<int:post_id>/', endpoint='post_detail')
 
 # users
 api.add_resource(UserListResource, '/user/')
-api.add_resource(UserResource, '/user/<int:user_id>/')
+api.add_resource(UserResource, '/user/<int:user_id>/', endpoint='user_detail')
