@@ -72,6 +72,7 @@ class UserResource(Resource):
         raw_data = request.get_json() or {}
         try:
             user = user_schema.load(data=raw_data, instance=old_user)
+            user.password = bcrypt.generate_password_hash(user.password).decode("utf-8")
         except ValidationError as e:
             return bad_request(str(e))
         db.session.commit()
@@ -97,5 +98,4 @@ class UserListResource(Resource):
         return user_schema.dump(user)
 
 
-# todo nested fk author
-# todo flask swagger
+
