@@ -29,5 +29,7 @@
 * to apply the generated migrations
 
     `flask db upgrade`
-    
 
+* to unapply the applied migrations
+
+    `flask db downgrade`
