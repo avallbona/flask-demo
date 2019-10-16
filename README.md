@@ -17,7 +17,7 @@
     * python -m venv myenv
     * source bin/activate
     * pip install -r requirements.txt
-* `cp .env.template to .env`
+* `cp .env.template .env`
 * fill the env vars
 * `flask run`
 
