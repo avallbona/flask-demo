@@ -2,5 +2,5 @@
 
 * nested fk author
 * token authorization (flask-httpauth)
-* email validation on users chema
-* flask swagger
+* DONE - email validation on users chema
+* DONE - flask swagger
