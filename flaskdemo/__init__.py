@@ -58,12 +58,12 @@ def configure_apispec(app):
         "scheme": "bearer",
         "bearerFormat": "JWT",
     })
-    apispec.spec.components.schema(
-        "PaginatedResult", {
-            "properties": {
-                "total": {"type": "integer"},
-                "pages": {"type": "integer"},
-                "next": {"type": "string"},
-                "prev": {"type": "string"},
-            }})
-
+    # apispec.spec.components.schema(
+    #     "PaginatedResult", {
+    #         "properties": {
+    #             "total": {"type": "integer"},
+    #             "pages": {"type": "integer"},
+    #             "next": {"type": "string"},
+    #             "prev": {"type": "string"},
+    #         }})
+    #
