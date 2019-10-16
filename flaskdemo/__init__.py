@@ -6,6 +6,7 @@ from flask_marshmallow import Marshmallow
 from flask_sqlalchemy import SQLAlchemy
 from flask_migrate import Migrate
 
+from flaskdemo.commons.apispec import APISpecExt
 from flaskdemo.config import Config
 
 db = SQLAlchemy()
@@ -17,6 +18,7 @@ login_manager.login_view = "users.login"
 login_manager.login_message_category = "info"
 mail = Mail()
 ma = Marshmallow()
+apispec = APISpecExt()
 
 
 def create_app(config_class=Config):
@@ -42,4 +44,26 @@ def create_app(config_class=Config):
     app.register_blueprint(errors)
     app.register_blueprint(api_bp)
 
+    configure_apispec(app)
+
     return app
+
+
+def configure_apispec(app):
+    """Configure APISpec for swagger support
+    """
+    apispec.init_app(app)
+    apispec.spec.components.security_scheme("jwt", {
+        "type": "http",
+        "scheme": "bearer",
+        "bearerFormat": "JWT",
+    })
+    apispec.spec.components.schema(
+        "PaginatedResult", {
+            "properties": {
+                "total": {"type": "integer"},
+                "pages": {"type": "integer"},
+                "next": {"type": "string"},
+                "prev": {"type": "string"},
+            }})
+

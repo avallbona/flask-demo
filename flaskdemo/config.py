@@ -28,3 +28,4 @@ class Config:
 
     print('db_uri')
     print(SQLALCHEMY_DATABASE_URI)
+    print('SECRET_KEY', os.environ.get('SECRET_KEY'))

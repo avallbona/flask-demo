@@ -1,6 +1,5 @@
 from flask import request
-from flask_login import login_required
-from flask_restful import Resource, reqparse
+from flask_restful import Resource
 from marshmallow import ValidationError
 
 from flaskdemo import db, bcrypt
@@ -18,8 +17,6 @@ def get_user_or_404(user_id):
 
 
 class PostResource(Resource):
-
-    # @login_required
     def get(self, post_id):
         post = get_post_or_404(post_id)
         post_schema = PostSchema()
@@ -52,7 +49,7 @@ class PostListResource(Resource):
         post = post_schema.load(data=raw_data)
         db.session.add(post)
         db.session.commit()
-        return post_schema.dump(post)
+        return post_schema.dump(post), 201
 
 
 class UserResource(Resource):

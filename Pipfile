@@ -17,6 +17,8 @@ flask-restful = "*"
 flask-marshmallow = "*"
 marshmallow-sqlalchemy = "*"
 psycopg2 = "*"
+apispec = {extras = ["yaml"],version = "*"}
+apispec-webframeworks = "*"
 
 [dev-packages]
 
