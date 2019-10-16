@@ -17,6 +17,60 @@ def get_user_or_404(user_id):
 
 
 class PostResource(Resource):
+    """Single object resource
+
+    ---
+    get:
+      tags:
+        - Post
+      parameters:
+        - in: path
+          name: post_id
+          schema:
+            type: integer
+      responses:
+        200:
+          content:
+            application/json:
+              schema:
+                PostSchema
+        404:
+          description: post does not exists
+    put:
+      tags:
+        - Post
+      parameters:
+        - in: path
+          name: post_id
+          schema:
+            type: integer
+      requestBody:
+        content:
+          application/json:
+            schema:
+              PostSchema
+      responses:
+        200:
+          content:
+            application/json:
+              schema:
+                PostSchema
+        404:
+          description: post does not exists
+    delete:
+      tags:
+        - Post
+      parameters:
+        - in: path
+          name: post_id
+          schema:
+            type: integer
+      responses:
+        204:
+          description: no content
+        404:
+          description: post does not exists
+    """
     def get(self, post_id):
         post = get_post_or_404(post_id)
         post_schema = PostSchema()
@@ -38,7 +92,37 @@ class PostResource(Resource):
 
 
 class PostListResource(Resource):
+    """Creation and get_all
 
+    ---
+    get:
+      tags:
+        - Post
+      responses:
+        200:
+         content:
+           application/json:
+             schema:
+               allOf:
+                 - type: array
+                   items:
+                     $ref: '#/components/schemas/PostSchema'
+
+    post:
+      tags:
+        - Post
+      requestBody:
+        content:
+          application/json:
+            schema:
+              PostSchema
+      responses:
+        201:
+          content:
+            application/json:
+              schema:
+                PostSchema
+    """
     def get(self):
         post_schema = PostSchema(many=True)
         return post_schema.dump(Post.query.all())
@@ -53,6 +137,60 @@ class PostListResource(Resource):
 
 
 class UserResource(Resource):
+    """Single object resource
+
+    ---
+    get:
+      tags:
+        - User
+      parameters:
+        - in: path
+          name: user_id
+          schema:
+            type: integer
+      responses:
+        200:
+          content:
+            application/json:
+              schema:
+                UserSchema
+        404:
+          description: user does not exists
+    put:
+      tags:
+        - User
+      parameters:
+        - in: path
+          name: user_id
+          schema:
+            type: integer
+      requestBody:
+        content:
+          application/json:
+            schema:
+              UserSchema
+      responses:
+        200:
+          content:
+            application/json:
+              schema:
+                UserSchema
+        404:
+          description: user does not exists
+    delete:
+      tags:
+        - User
+      parameters:
+        - in: path
+          name: user_id
+          schema:
+            type: integer
+      responses:
+        204:
+          description: no content
+        404:
+          description: user does not exists
+    """
 
     def get(self, user_id):
         user = get_user_or_404(user_id)
@@ -79,6 +217,37 @@ class UserResource(Resource):
 
 
 class UserListResource(Resource):
+    """Creation and get_all
+
+    ---
+    get:
+      tags:
+        - User
+      responses:
+        200:
+         content:
+           application/json:
+             schema:
+               allOf:
+                 - type: array
+                   items:
+                     $ref: '#/components/schemas/UserSchema'
+
+    post:
+      tags:
+        - User
+      requestBody:
+        content:
+          application/json:
+            schema:
+              UserSchema
+      responses:
+        201:
+          content:
+            application/json:
+              schema:
+                UserSchema
+    """
 
     def get(self):
         user_schema = UserSchema(many=True)
