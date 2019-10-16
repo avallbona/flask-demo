@@ -10,8 +10,13 @@
 
 * clone repo https://github.com/avallbona/flask-demo
 * change to folder where you cloned the repo
-* `pipenv install`
-* `pipenv shell`
+* with pipenv
+    * `pipenv install`
+    * `pipenv shell`
+* with pip
+    * python -m venv myenv
+    * source bin/activate
+    * pip install -r requirements.txt
 * `cp .env.template to .env`
 * fill the env vars
 * `flask run`
