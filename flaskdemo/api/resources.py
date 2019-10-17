@@ -138,7 +138,6 @@ class PostListResource(Resource):
         except ValidationError as e:
             return bad_request(str(e))
         db.session.add(post)
-
         db.session.commit()
         return post_schema.dump(post), 201
 
@@ -271,6 +270,3 @@ class UserListResource(Resource):
         db.session.add(user)
         db.session.commit()
         return user_schema.dump(user)
-
-
-
