@@ -5,7 +5,9 @@ from flaskdemo import db
 from flaskdemo.models import Post
 from flaskdemo.posts.forms import PostForm
 
-posts = Blueprint('posts', __name__, url_prefix='/content', template_folder='templates')
+posts = Blueprint('posts', __name__,
+                  url_prefix='/content',
+                  template_folder='templates')
 
 
 @posts.route("/post/")
