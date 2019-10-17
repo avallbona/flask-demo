@@ -133,11 +133,12 @@ class PostListResource(Resource):
     def post(self):
         post_schema = PostSchema()
         raw_data = request.get_json() or {}
-        post = post_schema.load(data=raw_data)
         try:
-            db.session.add(post)
+            post = post_schema.load(data=raw_data)
         except ValidationError as e:
             return bad_request(str(e))
+        db.session.add(post)
+
         db.session.commit()
         return post_schema.dump(post), 201
 
