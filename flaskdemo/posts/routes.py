@@ -5,7 +5,8 @@ from flaskdemo import db
 from flaskdemo.models import Post
 from flaskdemo.posts.forms import PostForm
 
-posts = Blueprint('posts', __name__)
+posts = Blueprint('posts', __name__,
+                  url_prefix='/content')
 
 
 @posts.route("/post/new", methods=["GET", "POST"])
