@@ -86,7 +86,10 @@ class PostResource(Resource):
         old_post = get_post_or_404(post_id=post_id)
         post_schema = PostSchema()
         raw_data = request.get_json() or {}
-        post = post_schema.load(data=raw_data, instance=old_post)
+        try:
+            post = post_schema.load(data=raw_data, instance=old_post)
+        except ValidationError as e:
+            return bad_request(str(e))
         db.session.commit()
         return post_schema.dump(post)
 
@@ -131,7 +134,10 @@ class PostListResource(Resource):
         post_schema = PostSchema()
         raw_data = request.get_json() or {}
         post = post_schema.load(data=raw_data)
-        db.session.add(post)
+        try:
+            db.session.add(post)
+        except ValidationError as e:
+            return bad_request(str(e))
         db.session.commit()
         return post_schema.dump(post), 201
 
