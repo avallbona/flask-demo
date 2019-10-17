@@ -5,8 +5,14 @@ from flaskdemo import db
 from flaskdemo.models import Post
 from flaskdemo.posts.forms import PostForm
 
-posts = Blueprint('posts', __name__,
-                  url_prefix='/content')
+posts = Blueprint('posts', __name__, url_prefix='/content', template_folder='templates')
+
+
+@posts.route("/post/")
+def list_post():
+    page = request.args.get("page", 1, type=int)
+    posts = Post.query.order_by(Post.date_posted.desc()).paginate(page=page, per_page=5)
+    return render_template("posts/list_post.html", posts=posts)
 
 
 @posts.route("/post/new", methods=["GET", "POST"])
@@ -22,14 +28,14 @@ def new_post():
         flash("Your post has been created!", "success")
         return redirect(url_for("main.home"))
     return render_template(
-        "create_post.html", title="New Post", form=form, legend="New Post"
+        "posts/create_post.html", title="New Post", form=form, legend="New Post"
     )
 
 
 @posts.route("/post/<int:post_id>")
 def post(post_id):
     post = Post.query.get_or_404(post_id)
-    return render_template("post.html", title=post.title, post=post)
+    return render_template("posts/post.html", title=post.title, post=post)
 
 
 @posts.route("/post/<int:post_id>/update", methods=["GET", "POST"])
@@ -49,7 +55,7 @@ def update_post(post_id):
         form.title.data = post.title
         form.content.data = post.content
     return render_template(
-        "create_post.html", title="Update Post", form=form, legend="Update Post"
+        "posts/create_post.html", title="Update Post", form=form, legend="Update Post"
     )
 
 
