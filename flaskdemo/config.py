@@ -6,14 +6,14 @@ BASEDIR = os.path.abspath(os.path.dirname(__file__))
 class Config:
 
     SECRET_KEY = os.environ.get("SECRET_KEY")
-    # SQLALCHEMY_DATABASE_URI = os.environ.get('DATABASE_URL') or 'sqlite:///' + os.path.join(BASEDIR, 'sqlite.db')
-    SQLALCHEMY_DATABASE_URI = 'postgresql+psycopg2://{}:{}@{}:{}/{}'.format(
-        os.environ.get('DB_USER'),
-        os.environ.get('DB_PASSWORD'),
-        os.environ.get('DB_HOSTNAME'),
-        os.environ.get('DB_PORT'),
-        os.environ.get('DB_NAME'),
-    )
+    SQLALCHEMY_DATABASE_URI = os.environ.get('DATABASE_URL') or 'sqlite:///' + os.path.join(BASEDIR, 'sqlite.db')
+    # SQLALCHEMY_DATABASE_URI = 'postgresql+psycopg2://{}:{}@{}:{}/{}'.format(
+    #     os.environ.get('DB_USER'),
+    #     os.environ.get('DB_PASSWORD'),
+    #     os.environ.get('DB_HOSTNAME'),
+    #     os.environ.get('DB_PORT'),
+    #     os.environ.get('DB_NAME'),
+    # )
     SQLALCHEMY_TRACK_MODIFICATIONS = True
     MAIL_SERVER = "smtp.googlemail.com"
     MAIL_PORT = 587
