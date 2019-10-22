@@ -1,8 +1,8 @@
 # flask-demo
 
-## requirements
+## Requirements
 
-* pipenv****
+* pipenv
 * python 3.7
 
 
@@ -21,7 +21,7 @@
 * fill the env vars
 * `flask run`
 
-## migrations
+## Migrations
 
 * to initializate the migratioins
 
