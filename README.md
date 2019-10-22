@@ -23,7 +23,7 @@
 
 ## Migrations
 
-* to initializate the migratioins
+* to initializate the migrations
 
     `flask db init`
     
