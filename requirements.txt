@@ -18,7 +18,7 @@ flask-wtf==0.14.2
 flask==1.1.1
 itsdangerous==1.1.0
 jinja2==2.10.3
-mako==1.1.0
+mako==1.2.2
 markupsafe==1.1.1
 marshmallow-sqlalchemy==0.19.0
 marshmallow==3.2.1
